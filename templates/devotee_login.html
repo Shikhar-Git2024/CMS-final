@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Pilgrim Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="{{ url_for('role') }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg">
+  <div class="card">
+    <h2>Pilgrim Login</h2>
+    <p>Enter your spiritual journey</p>
+
+    <!-- ✅ PROPER FORM -->
+    <form method="post">
+      <input
+        type="text"
+        name="username"
+        placeholder="Enter your username"
+        required
+      >
+
+      <input
+        type="password"
+        name="password"
+        placeholder="Enter your password"
+        required
+      >
+
+      <!-- ❌ <a> HATA DIYA | ✅ Direct submit -->
+      <button type="submit">
+        Begin Spiritual Journey
+      </button>
+    </form>
+
+    <p class="small">Don't have an account?</p>
+    <a href="/devdash">Create New Account</a>
+  </div>
+</div>
+
+{% endblock %}

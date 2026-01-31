@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Devotee Dashboard{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/devdash.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="/devotee/planner">Planner</a>
+
+<a href="/devotee/map">Map & Navigation</a>
+<a href="/devotee/emergency">Emergency</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+  <h1>🛕 Select Temple</h1>
+  <p class="subtitle">Tap on a temple to view live insights</p>
+
+  <div class="temple-grid">
+
+    <a href="/devotee/temple/1" class="temple-card">
+      <img src="{{ url_for('static', filename='img/m.jpg') }}" alt="Mahakaleshwar">
+      <p>Mahakaleshwar</p>
+    </a>
+
+    <a href="/devotee/temple/2" class="temple-card">
+      <img src="{{ url_for('static', filename='img/k.jpg') }}" alt="Kashi Vishwanath">
+      <p>Kashi Vishwanath</p>
+    </a>
+
+    <a href="/devotee/temple/3" class="temple-card">
+      <img src="{{ url_for('static', filename='img/s.jpg') }}" alt="Sabarimala">
+      <p>Sabarimala</p>
+    </a>
+
+    <a href="/devotee/temple/4" class="temple-card">
+      <img src="{{ url_for('static', filename='img/t.jpg') }}" alt="Tirupati">
+      <p>Tirupati</p>
+    </a>
+
+  </div>
+
+</div>
+
+{% endblock %}

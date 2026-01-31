@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Temple Overview{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/temple.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="/devotee">Dashboard</a>
+<a href="/devotee/planner">Planner</a>
+<a href="/devotee/map">Map</a>
+<a href="/devotee/emergency">Emergency</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="temple-container">
+
+  <h1>{{ temple_name }}</h1>
+  <p class="subtitle">Live temple insights & crowd trends</p>
+
+  <!-- WEATHER -->
+  <div class="info-card">
+    <h3>🌤 Weather</h3>
+    <p>Clear | 28°C | Humidity: 60%</p>
+  </div>
+
+  <!-- CROWD STATS -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <h4>Past Crowd</h4>
+      <p>Low</p>
+    </div>
+
+    <div class="stat-card">
+      <h4>Current Crowd</h4>
+      <p>Moderate</p>
+    </div>
+
+    <div class="stat-card">
+      <h4>Expected Crowd</h4>
+      <p>High</p>
+    </div>
+
+  </div>
+
+  <!-- GRAPH PLACEHOLDER -->
+  <div class="graph-card">
+    <h3>📊 Crowd Trend</h3>
+    <p>(Graph will be displayed here)</p>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+/* BACKGROUND */
+.bg {
+  min-height: calc(100vh - 120px); /* header + navbar safe */
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+/* CARD */
+.card {
+  width: 420px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 18px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+/* TITLE */
+.card h2 {
+  margin-bottom: 5px;
+  color: #ffcc70;
+}
+
+.card p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #ddd;
+}
+
+/* INPUTS */
+.card input,
+.card select,
+.card textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.card button {
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(to right, #ff9800, #ff5722);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  transform: scale(1.03);
+}
+
+/* HINT TEXT */
+.hint {
+  font-size: 12px;
+  color: #ddd;
+  display: block;
+  text-align: left;
+  margin-top: 3px;
+}
+
+/* BACK LINK */
+.card a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #ffcc70;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}

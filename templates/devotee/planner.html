@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}Visit Planner{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/planner.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="/devotee">Dashboard</a>
+
+<a href="/devotee/map">Map & Navigation</a>
+<a href="/devotee/emergency">Emergency</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="planner-container">
+
+  <h1>🗓️ Darshan Planner</h1>
+  <p class="subtitle">Plan your visit at the most peaceful time</p>
+
+  <!-- INPUTS -->
+  <form class="planner-form" id="plannerForm">
+    <select name="temple" id="templeSelect">
+      <option value="">Select Temple</option>
+      <option value="1">Kashi Vishwanath</option>
+      <option value="2">Mahakaleshwar</option>
+      <option value="3">Jagannath Puri</option>
+      <option value="4">Ayodhya Ram Mandir</option>
+    </select>
+
+    <select name="month" id="monthSelect">
+      <option value="">Select Month</option>
+      <option value="Jan">January</option>
+      <option value="Feb">February</option>
+      <option value="Mar">March</option>
+      <option value="Apr">April</option>
+      <option value="May">May</option>
+      <option value="Jun">June</option>
+      <option value="Jul">July</option>
+      <option value="Aug">August</option>
+      <option value="Sep">September</option>
+      <option value="Oct">October</option>
+      <option value="Nov">November</option>
+      <option value="Dec">December</option>
+    </select>
+
+    <button type="submit" class="plan-btn">Generate Best Plan</button>
+  </form>
+
+  <!-- RESULT (NO OUTPUT INITIALLY) -->
+  <div class="result-grid">
+    <div class="result-card">
+      <h3>✅ Best Day</h3>
+      <p id="bestDay">–</p>
+    </div>
+
+    <div class="result-card">
+      <h3>⏰ Best Time Slot</h3>
+      <p id="bestTime">–</p>
+    </div>
+
+    <div class="result-card">
+      <h3>👥 Expected Crowd</h3>
+      <p id="crowd" class="moderate">–</p>
+    </div>
+
+    <div class="result-card">
+      <h3>⏳ Estimated Wait</h3>
+      <p id="wait">–</p>
+    </div>
+
+    <div class="result-card">
+      <h3>⚠️ Risk Level</h3>
+      <p id="risk" class="low">–</p>
+    </div>
+  </div>
+
+  <!-- SMART TIPS -->
+  <div class="tips-box">
+    <h3>💡 Smart Suggestions</h3>
+    <ul>
+      <li>Avoid Mondays & major festival days</li>
+      <li>Early morning hours are least crowded</li>
+      <li>Weekdays are better than weekends</li>
+      <li>Monsoon season has lower footfall</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+document.getElementById("plannerForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const temple = document.getElementById("templeSelect").value;
+  const month = document.getElementById("monthSelect").value;
+
+  if (!temple || !month) {
+    alert("Please select both temple and month");
+    return;
+  }
+
+  let bestDay = "Wednesday";
+  let bestTime = "5:00 AM – 7:30 AM";
+  let crowd = "Moderate";
+  let wait = "25 – 35 minutes";
+  let risk = "Low";
+
+  if (month === "Jul" || month === "Aug") {
+    bestDay = "Tuesday / Wednesday";
+    bestTime = "6:00 AM – 8:00 AM";
+    crowd = "Low";
+    wait = "15 – 25 minutes";
+    risk = "Low";
+  }
+
+  if (month === "Oct" || month === "Nov") {
+    bestDay = "Thursday";
+    bestTime = "4:30 AM – 6:30 AM";
+    crowd = "High";
+    wait = "50 – 70 minutes";
+    risk = "Moderate";
+  }
+
+  if (temple === "1" || temple === "2") {
+    crowd = "High";
+    wait = "40 – 55 minutes";
+    risk = "Moderate";
+  }
+
+  document.getElementById("bestDay").innerText = bestDay;
+  document.getElementById("bestTime").innerText = bestTime;
+  document.getElementById("crowd").innerText = crowd;
+  document.getElementById("wait").innerText = wait;
+  document.getElementById("risk").innerText = risk;
+});
+</script>
+
+{% endblock %}

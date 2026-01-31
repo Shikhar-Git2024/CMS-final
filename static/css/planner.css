@@ -1,0 +1,58 @@
+.planner-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* FORM */
+.planner-form {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.planner-form select {
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.plan-btn {
+  background: #ff9933;
+  border: none;
+  padding: 10px 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* RESULTS */
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.result-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.low { color: green; font-weight: bold; }
+.moderate { color: orange; font-weight: bold; }
+
+/* TIPS */
+.tips-box {
+  background: #fff3cd;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+}

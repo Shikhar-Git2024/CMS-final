@@ -1,0 +1,119 @@
+/* MAIN CONTAINER */
+.emergency-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  text-align: center;
+}
+
+/* TITLE */
+.emergency-title {
+  color: #d00000;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.emergency-subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* SOS */
+.sos-box {
+  margin-bottom: 40px;
+}
+
+.sos-btn {
+  background: #d00000;
+  color: #fff;
+  border: none;
+  padding: 16px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(208, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sos-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 14px 35px rgba(208, 0, 0, 0.5);
+}
+
+.sos-note {
+  margin-top: 10px;
+  color: #444;
+}
+
+/* CALL GRID */
+.call-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.call-card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.call-card span {
+  display: block;
+  font-size: 22px;
+  margin-top: 8px;
+}
+
+/* COLORS */
+.call-card.police { border-top: 6px solid #0d6efd; }
+.call-card.ambulance { border-top: 6px solid #198754; }
+.call-card.fire { border-top: 6px solid #dc3545; }
+
+.call-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.3);
+}
+
+/* SAFETY INFO */
+.safety-info {
+  text-align: left;
+  background: #fff3cd;
+  padding: 25px 30px;
+  border-radius: 14px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.safety-info h3 {
+  margin-bottom: 12px;
+}
+
+.safety-info ul {
+  padding-left: 20px;
+}
+
+.safety-info li {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .call-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .emergency-title {
+    font-size: 28px;
+  }
+}

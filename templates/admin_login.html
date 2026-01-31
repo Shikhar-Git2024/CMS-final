@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="{{ url_for('role') }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg">
+  <div class="card">
+    <h2>Management Login</h2>
+    <p>Secure access to command center</p>
+
+    <form method="post">
+      <input type="text" name="username" placeholder="Enter management username" required>
+      <input type="password" name="password" placeholder="Enter management password" required>
+
+      <button type="submit">Access Command Center</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Emergency Assistance{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/emergency.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="/devotee">Dashboard</a>
+<a href="/devotee/planner">Planner</a>
+<a href="/devotee/map">Map & Navigation</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="emergency-container">
+
+  <h1 class="emergency-title">🚨 Emergency Assistance</h1>
+  <p class="emergency-subtitle">
+    Use these options only in case of real emergencies
+  </p>
+
+  <!-- SOS BUTTON -->
+  <div class="sos-box">
+    <button class="sos-btn" onclick="triggerSOS()">
+      🚨 SOS – Immediate Help
+    </button>
+    <p class="sos-note">
+      This will alert temple authorities & nearby security
+    </p>
+  </div>
+
+  <!-- CALL BUTTONS -->
+  <div class="call-grid">
+
+    <a href="tel:112" class="call-card police">
+      📞 Police
+      <span>112</span>
+    </a>
+
+    <a href="tel:108" class="call-card ambulance">
+      🚑 Ambulance
+      <span>108</span>
+    </a>
+
+    <a href="tel:101" class="call-card fire">
+      🔥 Fire Brigade
+      <span>101</span>
+    </a>
+
+  </div>
+
+  <!-- SAFETY INFO -->
+  <div class="safety-info">
+    <h3>⚠️ Safety Instructions</h3>
+    <ul>
+      <li>Stay calm and avoid pushing or running</li>
+      <li>Follow instructions from temple volunteers</li>
+      <li>Move towards open areas if overcrowded</li>
+      <li>Assist children, elderly & injured devotees</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+function triggerSOS() {
+  alert("🚨 SOS Activated!\nTemple authorities have been notified.");
+}
+</script>
+
+{% endblock %}

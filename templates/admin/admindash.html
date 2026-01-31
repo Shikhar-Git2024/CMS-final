@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admindash.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="/admin/dashboard">Dashboard</a>
+<a href="/admin/control">Crowd Control</a>
+<a href="/admin/logs">Logs</a>
+<a href="/admin/models">Models</a>
+{% endblock %}
+
+{% block content %}
+
+<h2>Admin Control Panel</h2>
+
+<div class="admin-grid">
+
+  <!-- STATS ROW -->
+  <div class="card">
+    <h4>Total Visitors Today</h4>
+    <p id="totalVisitors">32,450</p>
+  </div>
+
+  <div class="card">
+    <h4>Gate Occupancy</h4>
+    <p id="gateOcc">Gate 1: 80%<br>Gate 2: 65%</p>
+  </div>
+
+  <div class="card">
+    <h4>Resources Required</h4>
+    <p>Police: 15<br>Volunteers: 30<br>Ambulance: 2</p>
+  </div>
+
+  <div class="card danger">
+    <h4>Alert System</h4>
+    <p>⚠ Overcrowding at Gate 1</p>
+  </div>
+
+</div>
+
+<!-- MONITORING ROW -->
+<div class="monitor-grid">
+
+  <!-- CCTV -->
+  <div class="monitor-card">
+    <h4>Live CCTV Feed</h4>
+    <video src="/static/sample.mp4" controls autoplay muted width="100%"></video>
+  </div>
+
+  <!-- CROWD DENSITY -->
+  <div class="monitor-card">
+    <h4>Crowd Density</h4>
+    <p>Density: HIGH</p>
+    <p>Risk Level: <span class="risk high">HIGH</span></p>
+  </div>
+
+  <!-- THEFT DETECTOR -->
+  <div class="monitor-card danger">
+    <h4>Theft Detector</h4>
+    <p>Status: ❌ Theft Detected</p>
+    <p>Location: Gate 3</p>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/admindash.js') }}"></script>
+{% endblock %}

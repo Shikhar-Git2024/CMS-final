@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Map & Navigation{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+{% endblock %}
+
+{% block nav %}
+<a href="/devotee">Dashboard</a>
+<a href="/devotee/planner">Planner</a>
+
+<a href="/devotee/emergency">Emergency</a>
+{% endblock %}
+
+{% block content %}
+
+<h2>Temple Map & Navigation</h2>
+
+<div id="section">
+  <div id="left">
+      <img id="templeImage" src="{{ url_for('static', filename='mahakaleshwar.jpg') }}" alt="Temple Image">
+  </div>
+
+  <div id="right">
+      <select id="templeSelect" onchange="changeTemple()">
+          <option value="mahakaleshwar">Mahakaleshwar</option>
+          <option value="sabarimala">Sabarimala</option>
+          <option value="kashi">Kashi Vishwanath</option>
+          <option value="tirupati">Tirupati Balaji</option>
+      </select>
+
+      <div id="map"></div>
+
+      <div id="legend">
+          🟦 Hospital<br>
+          🔴 Medical<br>
+          🟨 Hotel<br>
+          🟩 Parking<br>
+          🟧 Restaurant<br>
+          ⚫ Railway<br>
+          🟪 Metro<br>
+          🟤 Bus
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

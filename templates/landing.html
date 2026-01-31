@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Sugam Darshan – Temple Crowd Management{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="/motivation">Motivation</a>
+<a href="/vision">Vision</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+
+<a href="/role" class="login-btn">
+    <span class="user-icon">👤</span> Login
+</a>
+
+    
+{% endblock %}
+
+
+
+{% block content %}
+
+<section class="hero">
+
+    <video autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='video/templenew.mp4') }}" type="video/mp4">
+    </video>
+
+    <div class="hero-left">
+        <h1>Welcome to Sugam Darshan</h1>
+        <p>
+            AI-powered Temple Crowd Management System for safer darshan,
+            shorter queues, and better pilgrim experience.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/role" class="primary-btn">Get Started</a>
+            <a href="#" class="secondary-btn">Live Darshan</a>
+        </div>
+    </div>
+
+<div class="phase-container">
+
+    <h3 class="phase-title">Phase 1 – Active Temples</h3>
+
+    <div class="temple-grid">
+
+        <div class="temple-card">
+            <img src="{{ url_for('static', filename='img/m.jpg') }}" alt="Mahakaleshwar">
+            <p>Mahakaleshwar</p>
+        </div>
+
+        <div class="temple-card">
+            <img src="{{ url_for('static', filename='img/k.jpg') }}" alt="Kashi Vishwanath">
+            <p>Kashi Vishwanath</p>
+        </div>
+
+        <div class="temple-card">
+            <img src="{{ url_for('static', filename='img/s.jpg') }}" alt="Sabarimala">
+            <p>Sabarimala</p>
+        </div>
+
+        <div class="temple-card">
+            <img src="{{ url_for('static', filename='img/t.jpg') }}" alt="Tirupati">
+            <p>Tirupati</p>
+        </div>
+
+    </div>
+
+    <button class="journey-btn" onclick="location.href='/role'">
+        Start Your Spiritual Journey
+    </button>
+
+</div>
+
+
+
+</section>
+
+{% endblock %}

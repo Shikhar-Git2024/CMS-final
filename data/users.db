@@ -1,0 +1,9 @@
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT,
+    password TEXT,
+    role TEXT
+);
+
+INSERT INTO users VALUES (1,'admin','admin123','authority');
+INSERT INTO users VALUES (2,'user','user123','devotee');

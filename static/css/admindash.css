@@ -1,0 +1,74 @@
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.danger {
+  color: red;
+  font-weight: bold;
+}
+
+.action-btn {
+  margin: 10px;
+  padding: 12px 20px;
+  background: #003366;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.action-btn.danger {
+  background: red;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 20px;
+}
+
+.monitor-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 15px;
+  margin: 20px;
+}
+
+.card, .monitor-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.card p, .monitor-card p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.danger {
+  border-left: 6px solid red;
+  background: #ffecec;
+}
+
+.risk.high {
+  color: red;
+  font-weight: bold;
+}
+
+.risk.medium {
+  color: orange;
+}
+
+.risk.low {
+  color: green;
+}

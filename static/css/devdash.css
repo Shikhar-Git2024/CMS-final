@@ -1,0 +1,94 @@
+.navbar {
+  color: white;
+  align-items: center;
+  background: #ff9933;
+  padding: 10px 24px;
+  display: flex;
+  gap: 20px;
+  height: 30px;
+  border-bottom: 3px solid #c07015;
+}
+
+.header {
+  background: #ffeecc;
+  padding: 12px 24px;
+  border-bottom: 3px solid #c07015;
+  border-top: 3px solid #090909;
+  height: 50px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.moderate { color: orange; }
+.warning { color: #ff9800; }
+
+.updates {
+  margin-top: 20px;
+  background: white;
+  padding: 15px;
+  border: 1px solid #ddd;
+}
+.dashboard-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.temple-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+/* CARD */
+.temple-card {
+  background: #ffffff;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #000;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: all 0.35s ease;
+}
+
+.temple-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.temple-card p {
+  padding: 14px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* HOVER (PLANNER FEEL) */
+.temple-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(255,153,51,0.6);
+  background: #fff7e6;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .temple-grid {
+    grid-template-columns: 1fr;
+  }
+}

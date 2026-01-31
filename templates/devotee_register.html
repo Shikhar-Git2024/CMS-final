@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Pilgrim Registration{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/devotee_register.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="{{ url_for('devotee_login') }}">Back to Login</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg">
+  <div class="card">
+    <h2>Pilgrim Registration</h2>
+    <p>Join our spiritual journey</p>
+
+    <form action="{{ url_for('devotee_register') }}" method="POST">
+
+      <input type="text" name="fullname" placeholder="Full Name" required>
+
+      <input type="email" name="email" placeholder="Email Address" required>
+
+      <input type="text" name="phone" placeholder="Phone Number" required>
+
+      <select name="age" required>
+        <option value="">Select Age</option>
+        {% for i in range(10, 101) %}
+          <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+      </select>
+
+      <input type="text" name="username" placeholder="Username" required>
+      <small class="hint">Use letters & numbers only. No spaces.</small>
+
+      <input type="password" name="password" placeholder="Create Password" required>
+      <small class="hint">At least 6 characters.</small>
+
+      <button type="submit">Create Account & Continue</button>
+
+    </form>
+
+    <a href="{{ url_for('devotee_login') }}">← Back to Login</a>
+  </div>
+</div>
+
+{% endblock %}

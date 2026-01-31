@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Sugam Darshan - Select Role{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/role.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="/">Home</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="page">
+
+  <div class="card devotee">
+    <h2>Devotee Access</h2>
+    <p>View darshan status, wait time & safety guidance</p>
+    <a href="{{ url_for('devotee_login') }}" class="btn devotee">Start Your Sugam Yatra</a>
+  </div>
+
+  <div class="card admin">
+    <h2>Admin Access</h2>
+    <p>Monitor crowd, risk levels & take early action</p>
+    <a href="{{ url_for('admin_login_page') }}" class="btn authority">
+  Enter Admin Portal
+</a>
+
+  </div>
+
+</div>
+
+{% endblock %}
