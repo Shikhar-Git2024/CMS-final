@@ -72,15 +72,12 @@ def devotee_login():
     if request.method == "POST":
         return redirect(url_for("devdash"))  # ✅ FIXED
     return render_template("devotee_login.html")
+
 @app.route("/devotee-register", methods=["GET", "POST"])
 def devotee_register():
     if request.method == "POST":
         return redirect(url_for("devdash"))
     return render_template("devotee_register.html")
-
-
-
-
 
 @app.route("/devotee/temple/<int:temple_id>")
 def temple_detail(temple_id):
@@ -113,6 +110,7 @@ def devemergency():
 @app.route("/devotee/planner")
 def devplanner():
     return render_template("devotee/planner.html")
+
 @app.route("/devotee/planner/result", methods=["POST"])
 def planner_result():
     temple_id = request.form.get("temple")
