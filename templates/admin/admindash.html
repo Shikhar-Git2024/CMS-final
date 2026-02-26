@@ -1,73 +1,139 @@
 {% extends "base.html" %}
+
 {% block title %}Admin Dashboard{% endblock %}
 
 {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/admindash.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {% endblock %}
 
 {% block nav %}
-<a href="/admin/dashboard">Dashboard</a>
-<a href="/admin/control">Crowd Control</a>
-<a href="/admin/logs">Logs</a>
-<a href="/admin/models">Models</a>
+<a href="#dashboard">Dashboard</a>
+<a href="#crowd">Crowd Monitoring</a>
+<a href="#cctv">CCTV & Threat Detection</a>
+<a href="#alerts">Alerts</a>
+<a href="{{ url_for('admin_view_devotees') }}">View Devotees</a>
+<a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
 {% endblock %}
 
 {% block content %}
 
-<h2>Admin Control Panel</h2>
+<!-- ================= DASHBOARD ================= -->
+<div class="admin-container" id="dashboard">
 
-<div class="admin-grid">
+  <!-- STATS -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>Visitors Today</h3>
+      <p class="big">1348</p>
+    </div>
 
-  <!-- STATS ROW -->
-  <div class="card">
-    <h4>Total Visitors Today</h4>
-    <p id="totalVisitors">32,450</p>
+    <div class="stat-card">
+      <h3>Crowd Density</h3>
+      <p class="big warning">Medium</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Avg Wait Time</h3>
+      <p class="big">57 mins</p>
+    </div>
+
+    <div class="stat-card danger">
+      <h3>Emergencies</h3>
+      <p class="big">1 Active</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Weather</h3>
+      <p class="big">Sunny</p>
+    </div>
   </div>
 
-  <div class="card">
-    <h4>Gate Occupancy</h4>
-    <p id="gateOcc">Gate 1: 80%<br>Gate 2: 65%</p>
-  </div>
+  <!-- CHART + QUICK ACTIONS -->
+  <div class="middle-grid">
 
-  <div class="card">
-    <h4>Resources Required</h4>
-    <p>Police: 15<br>Volunteers: 30<br>Ambulance: 2</p>
-  </div>
+    <div class="panel">
+      <h3>📊 Crowd History (Today)</h3>
+      <canvas id="crowdChart"></canvas>
+    </div>
 
-  <div class="card danger">
-    <h4>Alert System</h4>
-    <p>⚠ Overcrowding at Gate 1</p>
-  </div>
+    <div class="panel quick-panel">
+      <h3>⚡ Quick Actions</h3>
 
+      <button class="action-btn">📷 View Camera Feeds</button>
+      <button class="action-btn">👮 Staff Allocation</button>
+      <button class="action-btn">📢 Send Broadcast</button>
+      <button class="action-btn">📄 Generate Report</button>
+
+      <div class="calendar-card">
+        <h4>📅 Upcoming Festivals</h4>
+        <ul class="festival-list">
+          <li><span class="dot"></span> Jan 9 – Paush Purnima</li>
+          <li><span class="dot"></span> Jan 14 – Makar Sankranti</li>
+          <li><span class="dot"></span> Jan 28 – Mauni Amavasya</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<!-- MONITORING ROW -->
-<div class="monitor-grid">
+<!-- ================= CROWD ================= -->
+<section id="crowd" class="panel" style="margin-top:40px;">
+  <h3>👥 Crowd Monitoring</h3>
+  <p>Live crowd density, gate-wise load and AI-based risk analysis.</p>
 
-  <!-- CCTV -->
-  <div class="monitor-card">
-    <h4>Live CCTV Feed</h4>
-    <video src="/static/sample.mp4" controls autoplay muted width="100%"></video>
+  <div class="stats-grid">
+    <div class="stat-card"><h3>Gate 1</h3><p class="big warning">High</p></div>
+    <div class="stat-card"><h3>Gate 2</h3><p class="big">Medium</p></div>
+    <div class="stat-card"><h3>Gate 3</h3><p class="big">Low</p></div>
   </div>
+</section>
 
-  <!-- CROWD DENSITY -->
-  <div class="monitor-card">
-    <h4>Crowd Density</h4>
-    <p>Density: HIGH</p>
-    <p>Risk Level: <span class="risk high">HIGH</span></p>
+<!-- ================= CCTV ================= -->
+<section id="cctv" class="panel" style="margin-top:40px;">
+  <h3>📷 CCTV & Threat Detection</h3>
+
+  <div class="middle-grid">
+    <div class="panel">
+      <video src="/static/sample.mp4" controls width="100%"></video>
+    </div>
+
+    <div class="panel danger">
+      <h4>⚠ Threat Alert</h4>
+      <p>Status: Theft Detected</p>
+      <p>Location: Gate 3</p>
+    </div>
   </div>
+</section>
 
-  <!-- THEFT DETECTOR -->
-  <div class="monitor-card danger">
-    <h4>Theft Detector</h4>
-    <p>Status: ❌ Theft Detected</p>
-    <p>Location: Gate 3</p>
-  </div>
-
-</div>
+<!-- ================= ALERTS ================= -->
+<section id="alerts" class="panel" style="margin-top:40px;">
+  <h3>🚨 Alerts</h3>
+  <ul class="festival-list">
+    <li><span class="dot"></span> Overcrowding at Gate 1</li>
+    <li><span class="dot"></span> Medical team dispatched</li>
+    <li><span class="dot"></span> CCTV anomaly detected</li>
+  </ul>
+</section>
 
 {% endblock %}
 
 {% block js %}
-<script src="{{ url_for('static', filename='js/admindash.js') }}"></script>
+<script>
+new Chart(document.getElementById('crowdChart'), {
+  type: 'bar',
+  data: {
+    labels: ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM'],
+    datasets: [{
+      data: [550,700,850,780,650,500,400],
+      backgroundColor: '#ffa726',
+      borderColor: '#000',
+      borderWidth: 2,
+      barThickness: 38
+    }]
+  },
+  options: { plugins:{legend:{display:false}} }
+});
+</script>
 {% endblock %}

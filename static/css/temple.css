@@ -32,3 +32,77 @@
   border-radius: 14px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
+/* ---------- GLOBAL ---------- */
+.temple-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.temple-container h1 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* ---------- CARDS ---------- */
+.info-card, .graph-card {
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.info-card h3, .graph-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* ---------- LIST ---------- */
+.info-card ul {
+  padding-left: 18px;
+}
+
+.info-card li {
+  margin-bottom: 6px;
+}
+
+/* ---------- STATS GRID ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.stat-card {
+  background: #f7f9fb;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.stat-card span {
+  font-weight: bold;
+  color: #222;
+}
+
+/* ---------- GRAPH ---------- */
+.graph-card canvas {
+  width: 100% !important;
+  max-height: 300px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

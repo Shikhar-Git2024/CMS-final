@@ -17,7 +17,6 @@
     <h2>Pilgrim Login</h2>
     <p>Enter your spiritual journey</p>
 
-    <!-- ✅ PROPER FORM -->
     <form method="post">
       <input
         type="text"
@@ -32,12 +31,11 @@
         placeholder="Enter your password"
         required
       >
-
-      <!-- ❌ <a> HATA DIYA | ✅ Direct submit -->
       <button type="submit">
         Begin Spiritual Journey
       </button>
     </form>
+<a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
 
     <p class="small">Don't have an account?</p>
     <a href="{{ url_for('devotee_register') }}">Create New Account</a>

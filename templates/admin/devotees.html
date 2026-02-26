@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}All Devotees{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admindash.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="{{ url_for('admindash') }}">Dashboard</a>
+<a href="{{ url_for('logout') }}" class="logout-btn nav-icon">
+  <i class="fa fa-sign-out-alt"></i> Logout
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+  <h1>👥 Registered Devotees</h1>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Age</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in devotees %}
+      <tr>
+        <td>{{ d[0] }}</td>
+        <td>{{ d[1] }}</td>
+        <td>{{ d[2] }}</td>
+        <td>{{ d[3] }}</td>
+        <td>{{ d[4] }}</td>
+        <td>{{ d[5] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

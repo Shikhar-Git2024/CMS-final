@@ -1,74 +1,185 @@
-.admin-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+/* ================= ROOT ================= */
+
+.admin-container {
+  padding: 30px;
+  background: #fffaf0;
 }
 
-.card {
-  background: white;
-  padding: 20px;
-  border: 1px solid #ddd;
+/* ================= STATS ================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: #fff7e6;
+  border-radius: 18px;
+  padding: 26px 20px;
   text-align: center;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+  position: relative;
+  overflow: hidden;              /* ✅ IMPORTANT */
+  min-height: 155px;              /* ✅ SAME HEIGHT */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* PERFECTLY ALIGNED TOP STRIP */
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;                        /* ✅ FIX */
+  width: 100%;
+  height: 6px;
+  background: orange;
+}
+
+/* TEXT */
+.stat-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+/* BIG VALUE */
+.stat-card .big {
+  font-size: 40px;                /* balanced size */
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* STATES */
+.warning {
+  color: #ff9800;
 }
 
 .danger {
-  color: red;
-  font-weight: bold;
+  background: #ffeaea;
 }
+
+.danger::before {
+  background: #e53935;
+}
+
+/* ================= MIDDLE SECTION ================= */
+
+.middle-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 30px;
+}
+
+.panel {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.panel h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+/* ================= BUTTONS ================= */
 
 .action-btn {
-  margin: 10px;
-  padding: 12px 20px;
-  background: #003366;
-  color: white;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 14px;
   border: none;
-  cursor: pointer;
-}
-
-.action-btn.danger {
-  background: red;
-}
-
-.admin-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin: 20px;
-}
-
-.monitor-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 15px;
-  margin: 20px;
-}
-
-.card, .monitor-card {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-}
-
-.card p, .monitor-card p {
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff9800, #ff6f00);
+  color: white;
   font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  transition: transform 0.15s ease;
+}
+
+.action-btn:hover {
+  transform: scale(1.03);
+}
+
+/* ================= CALENDAR ================= */
+
+.calendar-card {
+  margin-top: 24px;
+  background: #fffaf2;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: inset 0 0 0 1px #ffd699;
+}
+
+.calendar-header {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.calendar-grid span {
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.calendar-grid .festival {
+  background: #ff9800;
+  color: white;
   font-weight: bold;
 }
 
-.danger {
-  border-left: 6px solid red;
-  background: #ffecec;
+.festival-list {
+  margin-top: 12px;
+  padding-left: 0;
+  list-style: none;
+  font-size: 13px;
 }
 
-.risk.high {
-  color: red;
-  font-weight: bold;
+.festival-list li {
+  margin-bottom: 6px;
 }
 
-.risk.medium {
-  color: orange;
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #ff9800;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
 }
 
-.risk.low {
-  color: green;
+.data-table th, .data-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.data-table th {
+  background: #1E6F78;
+  color: white;
+}
+
+.data-table tr:nth-child(even) {
+  background: #f9f9f9;
 }

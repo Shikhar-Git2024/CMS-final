@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/devdash.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block nav %}
+<a href="/devotee">Dashboard</a>
+<a href="/devotee/planner">Planner</a>
+<a href="/devotee/map">Map & Navigation</a>
+<a href="/devotee/emergency">Emergency</a>
+<a href="{{ url_for('edit_profile') }}" class="edit-btn">Edit Profile</a>
+<form action="{{ url_for('delete_account') }}" method="post"
+      onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
+
+  <button type="submit" class="delete-btn">
+    Delete Account
+  </button>
+</form>
+<a href="{{ url_for('logout') }}" class="logout-btn nav-icon">
+  <i class="fa fa-sign-out-alt"></i> Logout
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+
+  <h1>👤 My Profile</h1>
+
+  <div class="profile-grid">
+
+    <div class="profile-card">
+      <span class="label">Full Name</span>
+      <p>{{ user[0] }}</p>
+    </div>
+
+    <div class="profile-card">
+      <span class="label">Email</span>
+      <p>{{ user[1] }}</p>
+    </div>
+
+    <div class="profile-card">
+      <span class="label">Phone</span>
+      <p>{{ user[2] }}</p>
+    </div>
+
+    <div class="profile-card">
+      <span class="label">Age</span>
+      <p>{{ user[3] }}</p>
+    </div>
+
+    <div class="profile-card">
+      <span class="label">Username</span>
+      <p>{{ user[4] }}</p>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

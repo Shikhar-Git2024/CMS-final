@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Mahakaleshwar{% endblock %}
+{% block nav %}
+<a href="/devotee">Dashboard</a>
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/temple.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="temple-container">
+<h1>🕉️ Mahakaleshwar Jyotirlinga</h1>
+
+<div class="info-card">
+<h3>Darshan Timings</h3>
+<ul>
+<li>Morning: 4:00 AM – 11:00 AM</li>
+<li>Afternoon/Evening: 12:00 PM – 7:00 PM</li>
+<li>Late Night: After 9:00 PM (outside darshan)</li>
+</ul>
+</div>
+
+<div class="info-card">
+<h3>Key Rituals</h3>
+<ul>
+<li>Bhasma Aarti: 4:00 – 6:00 AM</li>
+<li>Bhog Aarti: 12:00 – 12:30 PM</li>
+<li>Sandhya Aarti: 7:00 – 7:30 PM</li>
+<li>Shayan Aarti: 10:30 – 11:00 PM</li>
+</ul>
+</div>
+
+<div class="info-card">
+<h3>🌤 Weather</h3>
+<p id="weather">Loading...</p>
+</div>
+
+<div class="stats-grid">
+<div class="stat-card">Past: <span id="past"></span></div>
+<div class="stat-card">Current: <span id="current"></span></div>
+<div class="stat-card">Expected: <span id="expected"></span></div>
+</div>
+
+<div class="graph-card">
+<canvas id="crowdChart"></canvas>
+</div>
+</div>
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const temple="mahakaleshwar";
+async function loadWeather(){
+ const r=await fetch(`/api/weather/${temple}`);
+ const d=await r.json();
+ document.getElementById("weather").innerText=
+ `${d.desc} | ${d.temp}°C | Humidity: ${d.humidity}%`;
+}
+let labels=[],data=[];
+function randomCrowd(){return Math.floor(180+Math.random()*350);}
+function updateCrowd(){
+ const now=new Date().toLocaleTimeString();
+ const c=randomCrowd();
+ labels.push(now);data.push(c);
+ if(labels.length>10){labels.shift();data.shift();}
+ document.getElementById("past").innerText=data[data.length-2]||c;
+ document.getElementById("current").innerText=c;
+ document.getElementById("expected").innerText=c+Math.floor(Math.random()*45);
+ chart.update();
+}
+const chart=new Chart(document.getElementById("crowdChart"),{
+ type:"line",data:{labels:labels,datasets:[{label:"Crowd",data:data,tension:0.3}]},
+ options:{scales:{y:{beginAtZero:true}}}
+});
+loadWeather();updateCrowd();
+setInterval(loadWeather,60000);
+setInterval(updateCrowd,5000);
+</script>
+{% endblock %}
+{% endblock %}

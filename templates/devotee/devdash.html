@@ -4,12 +4,23 @@
 
 {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/devdash.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
 {% endblock %}
 
 {% block nav %}
+<div class="nav-left">
 <a href="/devotee/planner">Planner</a>
 <a href="/devotee/map">Map & Navigation</a>
 <a href="/devotee/emergency">Emergency</a>
+</div>
+<div class="nav-right">
+<a href="{{ url_for('devotee_profile') }}" class="nav-icon">
+  <i class="fa fa-user"></i> Profile
+</a>
+<a href="{{ url_for('logout') }}" class="logout-btn nav-icon">
+  <i class="fa fa-sign-out-alt"></i> Logout
+</a>
+</div>
 {% endblock %}
 
 {% block content %}
@@ -20,24 +31,24 @@
 
   <div class="temple-grid">
 
-    <a href="/devotee/temple/1" class="temple-card">
+    <a href="/devotee/temple/mahakaleshwar" class="temple-card">
       <img src="{{ url_for('static', filename='img/m.jpg') }}" alt="Mahakaleshwar">
       <p>Mahakaleshwar</p>
     </a>
 
-    <a href="/devotee/temple/2" class="temple-card">
+    <a href="/devotee/temple/kashi" class="temple-card">
       <img src="{{ url_for('static', filename='img/k.jpg') }}" alt="Kashi Vishwanath">
       <p>Kashi Vishwanath</p>
     </a>
 
-    <a href="/devotee/temple/3" class="temple-card">
+    <a href="/devotee/temple/sabarimala" class="temple-card">
       <img src="{{ url_for('static', filename='img/s.jpg') }}" alt="Sabarimala">
       <p>Sabarimala</p>
     </a>
 
-    <a href="/devotee/temple/4" class="temple-card">
+    <a href="/devotee/temple/tirupati" class="temple-card">
       <img src="{{ url_for('static', filename='img/t.jpg') }}" alt="Tirupati Balaji">
-      <p>Tirupati</p>
+      <p>Tirupati Balaji</p>
     </a>
 
   </div>

@@ -1,3 +1,4 @@
+
 .navbar {
   color: white;
   align-items: center;
@@ -7,7 +8,14 @@
   gap: 20px;
   height: 30px;
   border-bottom: 3px solid #c07015;
+  justify-content: space-between;
 }
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 15px;
+}
+
 
 .header {
   background: #ffeecc;
